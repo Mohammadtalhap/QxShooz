@@ -1,9 +1,8 @@
-import React from 'react'
 
 function Logo() {
   return (
-    <h1 className="text-2xl font-bold cursor-pointer">
-        Shooz
+    <h1 className="text-2xl font-bold cursor-pointer py-8">
+        <img src="https://qx-shooz.myshopify.com/cdn/shop/files/logo.png?v=1731409697&width=250" alt="shooz logo"/>
     </h1>
   )
 }
