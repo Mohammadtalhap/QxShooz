@@ -1,6 +1,9 @@
 import { FaAngleDown } from "react-icons/fa6";
+import Dropdown from "./Dropdown";
+import ShopDropdown from "./ShopDropdown";
+import ProductDropdown from "./ProductDropdown";
 
-function NavLinkItems({title, hasDropdown, isActive, badge}) {
+function NavLinkItems({ title, hasDropdown, isActive, badge }) {
   return (
     <a
       href="#"
@@ -20,13 +23,18 @@ function NavLinkItems({title, hasDropdown, isActive, badge}) {
       </span>
 
       {/* Dropdown */}
-      {hasDropdown && (
-        <div className="absolute top-full left-0 w-60 bg-white shadow-lg p-4 pt-10 hidden group-hover:block z-50">
-          DropDown Content
-        </div>
+      {(title === "Shop") && (
+        <Dropdown>
+          <ShopDropdown />
+        </Dropdown>
       )}
 
-      
+      {(title === "Product") && (
+        <Dropdown>
+          <ProductDropdown />
+        </Dropdown>
+      )}
+
       {/* Hover Under Line */}
       {!isActive && (
         <span className="absolute left-0 bottom-7 w-0 h-px bg-[#b63f4f] transition-all duration-300 group-hover:w-full"></span>
