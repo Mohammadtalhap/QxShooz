@@ -1,134 +1,118 @@
-import React from "react";
+import DropdownTextLists from "./DropdownTextLists";
 
 function ProductDropdown() {
+
+  const productDropdownData = [
+    {
+      title: "Product Layouts",
+      items: [
+        "Thumbnails - bottom",
+        "Thumbnails - left",
+        "Thumbnails - right",
+        "Without Thumbnails",
+        "List - stacked",
+        "List - grid",
+        "Collage - style 1",
+        "Collage - style 2",
+      ],
+      listNumbering: true
+    },
+    {
+      title: "Product Type",
+      items: [
+        "Simple Product",
+        "Variable Product",
+        "With Video",
+        "Sold Out - Coming",
+      ],
+      listNumbering: false
+    },
+    {
+      title: "List Featured 1",
+      items: [
+        "Sticky ATC",
+        "Frequently Bought Together",
+        "Count Down",
+        "Cross Selling",
+        "Upsell Popup",
+        "Low Stock Alert",
+        "Pickup Store",
+      ],
+      listNumbering: false
+    },
+    {
+      title: "List Featured 2",
+      items: [
+        "Dropdown Variant",
+        "Swatch Variant Color",
+        "Swatch Variant Image",
+        "Variant Image Square",
+        "Size Guide",
+        "Description Accordion",
+        "Description Tab Center",
+      ],
+      listNumbering: false
+    },
+  ];
+  const productDropdownImages = [
+    {
+      title: "Waterproof Hiking Boots",
+      imageSrc: "https://qx-shooz.myshopify.com/cdn/shop/files/product-23_8eeee338-7bad-4c2b-b296-6804d886a41a.jpg",
+      brand: "trailGear",
+      price: "$25.00",
+      availability: true,
+      category: "healthcare",
+      material: "material 1",
+      features: ["canvas", "men", "durable"],
+      sizes: ["small", "medium", "large"],
+      productType: "boots"
+    }
+  ];
+  
   return (
-    <div className="grid grid-cols-5 gap-6 text-black">
-      {/* Column 1 */}
-      <div>
-        <h4 className="font-semibold mb-4 cursor-pointer">Layouts</h4>
-        <ol className="space-y-3 text-sm text-gray-600 list-decimal list-inside font-normal tracking-normal">
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Filter Sidebar
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Filter Top
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Filter Drawer
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Without Filter
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Collection - 2 columns
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Collection - 3 columns
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Collection - 4 columns
-          </li>
-        </ol>
-      </div>
-
-      {/* Column 2 */}
-      <div>
-        <h4 className="font-semibold mb-4 cursor-pointer">Features</h4>
-        <ol className="space-y-3 text-sm text-gray-600 font-normal tracking-normal">
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Banner Image
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Banner No Image
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Banner Split
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Collection list
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Sub Collection
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Pagination
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Infinity
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Load More
-          </li>
-        </ol>
-      </div>
-
-      {/* Column 3 */}
-      <div>
-        <h4 className="font-semibold mb-4 cursor-pointer">Hover Style</h4>
-        <ol className="space-y-3 text-sm text-gray-600 font-normal tracking-normal">
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Hover Style 1
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Hover Style 2
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Hover Style 3
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Hover Style 4
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Hover Style 5
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Hover Style 6
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Hover Style 7
-          </li>
-          <li className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit">
-            Hover Style 8
-          </li>
-        </ol>
-      </div>
-
-      {/* Column 4 (Images) */}
-      <div className="flex flex-col justify-center items-center">
-        <a href="" className="img-wrapper h-[260px] size-cover overflow-hidden">
-          <img
-            src="https://qx-shooz.myshopify.com/cdn/shop/collections/col-5.png?v=1731658002&width=360"
-            alt="Athletic Footwear"
-            className="h-full w-full size-cover cursor-pointer hover:scale-110 transition duration-500"
+    <div
+      className="grid gap-6 text-black"
+      style={{
+        gridTemplateColumns: `repeat(${productDropdownData.length + productDropdownImages.length}, minmax(0, 1fr))`,
+      }}
+    >
+      {/* Text Columns */}
+      {productDropdownData.map((item, index) => {
+        return (
+          <DropdownTextLists
+            key={"DropdownTextListsOf" + item.title}
+            item={item}
           />
-        </a>
-        <a
-          href=""
-          className="text-xl font-semibold mt-3 cursor-pointer tracking-normal"
+        );
+      })}
+
+      {/* Image Columns */}
+      {productDropdownImages.map((image, index) => (
+        <div
+          key={image.imageTitle}
+          className="flex flex-col justify-center items-center"
         >
-          Athletic Footwear
-        </a>
-        <p className="text-sm text-gray-600 font-normal tracking-normal cursor-text">
-          8 products
-        </p>
-      </div>
-
-      {/* Column 5 (Images) */}
-      <div className="flex flex-col justify-center items-center">
-        <div className="img-wrapper h-[260px] size-cover overflow-hidden">
-          <img
-            src="https://qx-shooz.myshopify.com/cdn/shop/collections/col-4.png?v=1731657987&width=360"
-            alt="Occasion Boot"
-            className="h-full w-full size-cover cursor-pointer hover:scale-110 transition duration-500"
-          />
+          <div
+            href="#"
+            className="img-wrapper h-[260px] size-cover overflow-hidden"
+          >
+            <img
+              src={image.imageSrc}
+              alt={image.imageTitle}
+              className="h-full w-full size-cover cursor-pointer hover:scale-110 transition duration-500"
+            />
+          </div>
+          <div
+            href="#"
+            className="text-xl font-semibold mt-3 cursor-pointer tracking-normal"
+          >
+            {image.imageTitle}
+          </div>
+          <p className="text-sm text-gray-600 font-normal tracking-normal cursor-text">
+            {image.imageTotalProducts}
+          </p>
         </div>
-        <h4 className="text-xl font-semibold mt-3 cursor-pointer tracking-normal">
-          Boots for all Occasion
-        </h4>
-        <p className="text-sm text-gray-600 font-normal tracking-normal cursor-text">
-          8 products
-        </p>
-      </div>
+      ))}
     </div>
   );
 }
