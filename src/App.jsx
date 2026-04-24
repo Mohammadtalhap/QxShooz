@@ -1,7 +1,7 @@
-import React from 'react'
-import TopBar from './components/TopBar'
-import Header from './components/Header/Header'
-import Home from './pages/Home'
+import React from "react";
+import TopBar from "./components/TopBar";
+import Header from "./components/Header/Header";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -9,8 +9,7 @@ function App() {
       <TopBar />
       <Header />
     </div>
-    
-  )
+  );
 }
 
-export default App
+export default App;
