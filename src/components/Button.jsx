@@ -1,0 +1,72 @@
+import { AiOutlineLoading } from "react-icons/ai";
+
+function Button({
+  text,
+  textUppercase = true,
+  variant = "primaryBtnRed",
+  size = "no",
+  iconPosition = "right",
+  icon,
+  loading = false,
+  disabled = false,
+  onClick,
+  href,
+}) {
+  const base = "font-medium transition-all duration-300 tracking-wider";
+  const variants = {
+    primaryBtnRed: "bg-[#b63f4f] text-white hover:bg-[black] hover:text-white",
+    primaryBtnWhite: "bg-white text-black hover:bg-[#b63f4f] hover:text-white",
+    underlineBtnRed: "underline underline-offset-4 text-red ",
+    underlineBtnWhite:
+      "underline underline-offset-4 text-white hover:opacity-70",
+    underlineBtnBlack:
+      "underline underline-offset-4 text-black hover:text-[#b63f4f]",
+  };
+  const sizes = {
+    no: "text-sm",
+    sm: "px-4 py-2 text-sm",
+    md: "px-6 py-3",
+    lg: "px-8 py-4 text-md",
+  };
+  const isDisabled = disabled || loading;
+
+  const classes = [
+    base,
+    textUppercase && "uppercase",
+    variants[variant],
+    sizes[size],
+    isDisabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer",
+  ]
+    .filter(Boolean)
+    .join(" ");
+  console.log("Classes: ", classes);
+  const content = (
+    <>
+      {loading && (
+        <span className="animate-spin">
+          <AiOutlineLoading />
+        </span>
+      )}
+      {!loading && icon && iconPosition === "left" && icon}
+      {text}
+      {!loading && icon && iconPosition === "right" && icon}
+    </>
+  );
+
+  if (href) {
+    return (
+      <a href={href} className={classes}>
+        {" "}
+        {content}{" "}
+      </a>
+    );
+  }
+
+  return (
+    <button className={classes} onClick={onClick} disabled={isDisabled}>
+      {content}
+    </button>
+  );
+}
+
+export default Button;

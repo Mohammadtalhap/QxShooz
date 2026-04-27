@@ -1,7 +1,9 @@
 import { FaAngleDown } from "react-icons/fa6";
+import BlogDropdown from "./BlogDropdown";
 import Dropdown from "./Dropdown";
-import ShopDropdown from "./ShopDropdown";
 import ProductDropdown from "./ProductDropdown";
+import ShopDropdown from "./ShopDropdown";
+import PagesDropdown from "./PagesDropdown";
 
 function NavLinkItems({ title, hasDropdown, isActive, badge }) {
   return (
@@ -23,15 +25,27 @@ function NavLinkItems({ title, hasDropdown, isActive, badge }) {
       </span>
 
       {/* Dropdown */}
-      {(title === "Shop") && (
+      {title === "Shop" && (
         <Dropdown>
           <ShopDropdown />
         </Dropdown>
       )}
 
-      {(title === "Product") && (
+      {title === "Product" && (
         <Dropdown>
           <ProductDropdown />
+        </Dropdown>
+      )}
+
+      {title === "Blog" && (
+        <Dropdown>
+          <BlogDropdown />
+        </Dropdown>
+      )}
+
+      {title === "Pages" && (
+        <Dropdown fullWidth={false}>
+          <PagesDropdown />
         </Dropdown>
       )}
 

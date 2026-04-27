@@ -1,7 +1,7 @@
 import productDropdownData from "../../data/ProductDropdownData";
 import products from "../../data/Products";
-import DropdownTextLists from "./DropdownTextLists";
 import ProductCard from "../ProductCard";
+import DropdownTextLists from "./DropdownTextLists";
 
 function ProductDropdown() {
 
