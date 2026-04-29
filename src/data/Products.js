@@ -15,7 +15,8 @@ const products = [
         material: "material 1",
         features: ["canvas", "men", "mesh", "tennis"],
         sizes: ["small", "medium", "large"],
-        productType: "slippers"
+        productType: "slippers",
+        tag: "featured"
     },
     {
         id: "product2",
@@ -33,7 +34,8 @@ const products = [
         material: "material 2",
         features: ["chunky", "heelsd", "minimalist", "sandals"],
         sizes: ["small", "large"],
-        productType: "sandals"
+        productType: "sandals",
+        tag: "new"
     },
     {
         id: "product3",
@@ -51,7 +53,8 @@ const products = [
         material: "material 3",
         features: ["block heel", "casual", "outdoor", "soft"],
         sizes: ["small", "medium"],
-        productType: "sneakers"
+        productType: "sneakers",
+        tag: "best"
     },
     {
         id: "product4",
@@ -69,7 +72,8 @@ const products = [
         material: "material 4",
         features: ["formal", "high top", "performance", "tennis"],
         sizes: ["medium", "large"],
-        productType: "sneakers"
+        productType: "sneakers",
+        tag: "featured"
     },
     {
         id: "product5",
@@ -87,7 +91,8 @@ const products = [
         material: "material 1",
         features: ["comfort", "hiking", "party"],
         sizes: ["large"],
-        productType: "running shoes"
+        productType: "running shoes",
+        tag: "new"
     },
     {
         id: "product6",
@@ -105,7 +110,8 @@ const products = [
         material: "material 1",
         features: ["breathable", "house", "platform"],
         sizes: ["medium"],
-        productType: "pumps"
+        productType: "pumps",
+        tag: "best"
     },
     {
         id: "product7",
@@ -123,7 +129,8 @@ const products = [
         material: "material 2",
         features: ["classic", "leather", "premium"],
         sizes: ["small", "medium"],
-        productType: "sneakers"
+        productType: "sneakers",
+        tag: "featured"
     },
     {
         id: "product8",
@@ -141,7 +148,8 @@ const products = [
         material: "material 2",
         features: ["comfort", "lightweight", "running"],
         sizes: ["small", "large"],
-        productType: "running shoes"
+        productType: "running shoes",
+        tag: "new"
     },
     {
         id: "product9",
@@ -159,7 +167,8 @@ const products = [
         material: "material 3",
         features: ["classic", "leather", "safe"],
         sizes: ["medium", "large"],
-        productType: "straps"
+        productType: "straps",
+        tag: "best"
     },
     {
         id: "product10",
@@ -177,7 +186,8 @@ const products = [
         material: "material 3",
         features: ["eco friendly", "men", "sandals"],
         sizes: ["small", "large"],
-        productType: "hiking boots"
+        productType: "hiking boots",
+        tag: "featured"
     },
     {
         id: "product11",
@@ -195,7 +205,8 @@ const products = [
         material: "material 4",
         features: ["casual", "leather", "slip on"],
         sizes: ["medium", "large"],
-        productType: "work shoes"
+        productType: "work shoes",
+        tag: "new"
     },
     {
         id: "product12",
@@ -213,7 +224,8 @@ const products = [
         material: "material 4",
         features: ["combat", "men", "slip resistance"],
         sizes: ["small", "medium", "large"],
-        productType: "moccasins"
+        productType: "moccasins",
+        tag: "best"
     },
     {
         id: "product13",
@@ -231,7 +243,8 @@ const products = [
         material: "material 1",
         features: ["durable", "men", "slippers"],
         sizes: ["small", "medium"],
-        productType: "heels"
+        productType: "heels",
+        tag: "featured"
     },
     {
         id: "product14",
@@ -249,7 +262,8 @@ const products = [
         material: "material 2",
         features: ["comfort", "men", "soft"],
         sizes: ["medium", "large"],
-        productType: "slippers"
+        productType: "slippers",
+        tag: "new"
     },
     {
         id: "product15",
@@ -267,7 +281,8 @@ const products = [
         material: "material 3",
         features: ["elegant", "men", "sparkling"],
         sizes: ["small", "large"],
-        productType: "boots"
+        productType: "boots",
+        tag: "best"
     },
     {
         id: "product16",
@@ -285,7 +300,8 @@ const products = [
         material: "material 4",
         features: ["cushioned", "men", "street style"],
         sizes: ["medium", "large"],
-        productType: "loafers"
+        productType: "loafers",
+        tag: "featured"
     },
     {
         id: "product17",
@@ -303,7 +319,8 @@ const products = [
         material: "material 1",
         features: ["chelsea", "men", "suede"],
         sizes: ["medium"],
-        productType: "boots"
+        productType: "boots",
+        tag: "new"
     },
 ];
 

@@ -12,16 +12,18 @@ function Button({
   disabled = false,
   onClick,
   href,
+  blackText
 }) {
   const base = `flex items-center gap-3 w-fit font-medium transition-all duration-300 tracking-wider ${className}`;
   const variants = {
     primaryBtnRed: "bg-[#b63f4f] text-white hover:bg-[black] hover:text-white",
     primaryBtnWhite: "bg-white text-black hover:bg-[#b63f4f] hover:text-white",
-    underlineBtnRed: "underline underline-offset-4 text-red ",
+    underlineBtnRed: "underline underline-offset-4 text-[#b63f4f]",
     underlineBtnWhite:
       "underline underline-offset-4 text-white hover:opacity-70",
     underlineBtnBlack:
       "underline underline-offset-4 text-black hover:text-[#b63f4f]",
+    normal: "text-[#808080] hover:text-black",
   };
   const sizes = {
     no: "text-sm",
@@ -36,10 +38,12 @@ function Button({
     textUppercase && "uppercase",
     variants[variant],
     sizes[size],
+    blackText && "text-black",
     isDisabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer",
   ]
     .filter(Boolean)
     .join(" ");
+
   const content = (
     <>
       {loading && (
