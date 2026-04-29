@@ -1,7 +1,8 @@
 import { AiOutlineLoading } from "react-icons/ai";
 
 function Button({
-  text,
+  className = "",
+  text = "Shop Now",
   textUppercase = true,
   variant = "primaryBtnRed",
   size = "no",
@@ -12,7 +13,7 @@ function Button({
   onClick,
   href,
 }) {
-  const base = "font-medium transition-all duration-300 tracking-wider";
+  const base = `flex items-center gap-3 w-fit font-medium transition-all duration-300 tracking-wider ${className}`;
   const variants = {
     primaryBtnRed: "bg-[#b63f4f] text-white hover:bg-[black] hover:text-white",
     primaryBtnWhite: "bg-white text-black hover:bg-[#b63f4f] hover:text-white",
@@ -39,7 +40,6 @@ function Button({
   ]
     .filter(Boolean)
     .join(" ");
-  console.log("Classes: ", classes);
   const content = (
     <>
       {loading && (

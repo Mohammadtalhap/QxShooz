@@ -1,6 +1,5 @@
-import React from "react";
-import TopBar from "./components/TopBar";
 import Header from "./components/Header/Header";
+import TopBar from "./components/TopBar";
 import Home from "./pages/Home";
 
 function App() {
@@ -8,6 +7,7 @@ function App() {
     <div>
       <TopBar />
       <Header />
+      <Home />
     </div>
   );
 }
