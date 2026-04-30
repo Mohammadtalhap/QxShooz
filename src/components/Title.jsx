@@ -1,31 +1,44 @@
-function Title({ titleDetail }) {
+function Title({
+  titleDetail,
+  tagClass = "",
+  titleClass = "",
+  titleDetailClass = "w-90",
+  commonClass = "",
+  className = "",
+  children = "",
+}) {
   const variants = {
-    left: "items-left",
+    left: "items-start text-left",
     center: "items-center",
-    right: "items-right",
+    right: "items-end text-right",
   };
 
   return (
     <div
-      className={`title-box flex flex-col justify-center gap-4 ${variants[titleDetail.position]}`}
+      className={`title-box flex flex-col justify-center gap-4 ${variants[titleDetail.position]} ${className}`}
     >
       {titleDetail.tag && (
-        <div className="title-small-tag uppercase tracking-widest text-xs font-medium text-[#808080]">
+        <div
+          className={`title-small-tag uppercase tracking-widest text-xs font-medium text-[#808080] ${commonClass} ${tagClass}`}
+        >
           {titleDetail.tag}
         </div>
       )}
 
-      <div className="title-main text-5xl font-semibold">
+      <div
+        className={`title-main text-5xl font-semibold ${commonClass} ${titleClass}`}
+      >
         {titleDetail.title}
       </div>
 
       {titleDetail.titleDetail && (
         <div
-          className={`title-detail w-90 tracking-right font-normal text-[#808080] ${titleDetail.position === "center" ? "[text-align:justify] [text-align-last:center]" : ""}`}
+          className={`title-detail tracking-right font-normal text-[#808080]  ${commonClass} ${titleDetailClass} ${titleDetail.position === "center" ? "[text-align:justify] [text-align-last:center]" : ""}`}
         >
           {titleDetail.titleDetail}
         </div>
       )}
+      {children}
     </div>
   );
 }

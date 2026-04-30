@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 function App() {
   return (
     <div>
-      <TopBar />
+      <TopBar offerCount={2} className="from-[#8f6abd] via-[#7e446f] to-[#b73d47]" />
       <Header />
       <Home />
     </div>
