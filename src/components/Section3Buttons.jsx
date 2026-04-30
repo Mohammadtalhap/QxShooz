@@ -13,7 +13,7 @@ function Section3Buttons({ activeTab, setActiveTab }) {
           <Button
             text={tab.label}
             variant="normal"
-            blackText={activeTab === tab.id}
+            textColor={activeTab === tab.id ? "black" : ""}
             onClick={() => {
               setActiveTab(tab.id);
             }}

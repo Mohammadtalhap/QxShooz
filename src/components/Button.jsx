@@ -12,7 +12,7 @@ function Button({
   disabled = false,
   onClick,
   href,
-  blackText
+  textColor
 }) {
   const base = `flex items-center gap-3 w-fit font-medium transition-all duration-300 tracking-wider ${className}`;
   const variants = {
@@ -24,9 +24,11 @@ function Button({
     underlineBtnBlack:
       "underline underline-offset-4 text-black hover:text-[#b63f4f]",
     normal: "text-[#808080] hover:text-black",
+    noVariant: ""
   };
   const sizes = {
     no: "text-sm",
+    xs: "px-2 py-1 text-xs",
     sm: "px-4 py-2 text-sm",
     md: "px-6 py-3",
     lg: "px-8 py-4 text-md",
@@ -38,7 +40,7 @@ function Button({
     textUppercase && "uppercase",
     variants[variant],
     sizes[size],
-    blackText && "text-black",
+    textColor && "text-" + textColor,
     isDisabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer",
   ]
     .filter(Boolean)

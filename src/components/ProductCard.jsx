@@ -2,8 +2,27 @@ import { AiOutlineSwap } from "react-icons/ai";
 import { FaRegHeart } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
+import Button from "./Button";
 
 function ProductCard({ cardObject }) {
+  const base = "absolute top-0 left-0 m-3 rounded-sm tracking-tighter z-10";
+  const variants = {
+    sale: base + " bg-[#84c8bb] text-white",
+    sold: base + " bg-white text-[#b63f4f] font-normal",
+  };
+  let classes = "";
+  let tagText = "";
+  let hasTag = false;
+  
+  if (!cardObject.availability) {
+    classes = variants.sold;
+    tagText = "Sold Out";
+    hasTag = true;
+  } else if (cardObject.salePercentage) {
+    classes = variants.sale;
+    tagText = cardObject.salePercentage;
+    hasTag = true;
+  }
   return (
     <>
       {/* Image Box */}
@@ -25,16 +44,19 @@ function ProductCard({ cardObject }) {
         </div>
 
         {/* Sale Box */}
-        {cardObject.salePercentage && (
-          <div className="sale-box absolute top-0 left-0 m-3 px-2 py-1 bg-[#84c8bb] rounded-sm text-xs text-white font-medium tracking-tight">
-            {cardObject.salePercentage}
-          </div>
+        {hasTag && (
+          <Button
+            className={classes}
+            text={tagText}
+            variant="noVariant"
+            size="xs"
+          />
         )}
 
         {/* Product Info */}
         <div className="productInfo flex flex-col gap-1 text-black transition-all duration-500 group-hover/mainBox:-translate-y-12 bg-white">
           <div className="productPrice flex items-end gap-2 mt-2">
-            {cardObject.price}
+            {cardObject.availability ? cardObject.price : "$0.00"}
             {cardObject.oldPrice && (
               <span className="line-through text-gray-500 text-sm">
                 {cardObject.oldPrice}

@@ -4,10 +4,32 @@ import products from "../data/Products";
 import ProductCard from "./ProductCard";
 
 function Section3Shop({ activeTab }) {
-  const filteredProducts = products.filter(product => product.tag === activeTab);
+  const filteredProducts = products.filter(
+    (product) => product.tag === activeTab,
+  );
 
   return (
-    <Swiper loop={true} slidesPerView={4}>
+    <Swiper
+      slidesPerView={1}
+      spaceBetween={15}
+      slidesPerGroup={1}
+      breakpoints={{
+        425: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+          slidesPerGroup: 2
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 30
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 35
+        },
+      }}
+      loop={true}
+    >
       {filteredProducts.map((product, index) => (
         <SwiperSlide key={index}>
           <ProductCard cardObject={product} />
