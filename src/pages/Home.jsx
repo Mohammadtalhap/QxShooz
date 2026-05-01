@@ -58,7 +58,11 @@ function Home() {
       </Section>
 
       <Section className="flex flex-col gap-12 bg-[#333333] py-20">
-        <Title titleDetail={titleDetails[3]} titleDetailClass="w-78" commonClass="text-white" />
+        <Title
+          titleDetail={titleDetails[3]}
+          titleDetailClass="w-78"
+          commonClass="text-white"
+        />
         <Section6BannersGrid />
       </Section>
 
@@ -73,41 +77,50 @@ function Home() {
         <Section8BigPoster />
       </Section>
 
-      <Section fullWidth className="w-full bg-linear-to-r from-[#946cc1] via-[#784473] to-[#b13a44] py-6">
+      <Section
+        fullWidth
+        className="w-full bg-linear-to-r from-[#946cc1] via-[#784473] to-[#b13a44] py-6"
+      >
         <div className="flex justify-around items-center">
-          <p className="text-white text-xl">Discover Our Stores: Your Local Shoe Haven</p>
-          <Button className="bg-[#4e4991] text-white" text="Find Store" variant="noVariant" size="md" />
+          <p className="text-white text-xl">
+            Discover Our Stores: Your Local Shoe Haven
+          </p>
+          <Button
+            className="bg-[#4e4991] text-white"
+            text="Find Store"
+            variant="noVariant"
+            size="md"
+          />
         </div>
       </Section>
 
-      <Section>
-        <Title titleDetail={titleDetails[5]} titleClass="text-4xl!" titleDetailClass="w-78" />
-      </Section>
+      <div className="bg-[#f9f9f9]">
+        <Section>
+          <Title
+            titleDetail={titleDetails[5]}
+            titleClass="text-4xl!"
+            titleDetailClass="w-78"
+          />
+        </Section>
+      </div>
 
 
 
 
 
-      <Section>
-      </Section>
-      <Section>
-      </Section>
-      <Section>
-      </Section>
-      <Section>
-      </Section>
-      <Section>
-      </Section>
-      <Section>
-      </Section>
-      <Section>
-      </Section>
-      <Section>
-      </Section>
-      <Section>
-      </Section>
-      <Section>
-      </Section>
+
+
+
+      <Section></Section>
+      <Section></Section>
+      <Section></Section>
+      <Section></Section>
+      <Section></Section>
+      <Section></Section>
+      <Section></Section>
+      <Section></Section>
+      <Section></Section>
+      <Section></Section>
     </div>
   );
 }
