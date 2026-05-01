@@ -2,14 +2,11 @@ import collectionBannerData from "../data/Section2CBData";
 import BannerPoster from "./BannerPoster";
 
 function Section2CollectionBanner() {
-  const productData = [...collectionBannerData];
+  const productData = collectionBannerData.filter((product) => product.id.includes("collection"));
 
   return (
     <div
       className="grid grid-cols-3 gap-8"
-      style={{
-        gridTemplateColumns: `repeat(${productData.length}, minmax(0, 1fr))`,
-      }}
     >
       {productData.map((product, index) => (
         <BannerPoster key={index} productData={product} />

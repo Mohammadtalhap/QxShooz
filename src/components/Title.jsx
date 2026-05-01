@@ -19,7 +19,7 @@ function Title({
     >
       {titleDetail.tag && (
         <div
-          className={`title-small-tag uppercase tracking-widest text-xs font-medium text-[#808080] ${commonClass} ${tagClass}`}
+          className={`title-small-tag uppercase tracking-[.20em] text-xs font-medium text-[#808080] ${commonClass} ${tagClass}`}
         >
           {titleDetail.tag}
         </div>
@@ -33,7 +33,7 @@ function Title({
 
       {titleDetail.titleDetail && (
         <div
-          className={`title-detail tracking-right font-normal text-[#808080]  ${commonClass} ${titleDetailClass} ${titleDetail.position === "center" ? "[text-align:justify] [text-align-last:center]" : ""}`}
+          className={`title-detail tracking-right font-normal text-[#808080]  ${commonClass} ${titleDetailClass} ${titleDetail.position === "center" ? "text-justify [text-align-last:center]" : ""}`}
         >
           {titleDetail.titleDetail}
         </div>
