@@ -6,7 +6,7 @@ import { borderAnimation } from "../../utils/styles";
 function Footer() {
   const data = [...footerData];
   return (
-    <div className="w-full bg-[#eaeae2] pt-50 pb-20 -translate-y-55">
+    <div className="w-full bg-[#eaeae2] pt-70 pb-20 -translate-y-55">
       <div className="grid grid-cols-5">
         {data.map((item, index) => {
           let hasBorderAnimation = false;

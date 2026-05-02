@@ -118,19 +118,6 @@ function Home() {
       <Section className="z-2">
         <Section11SubscribeForm />
       </Section>
-
-      <Footer />
-
-      <Section></Section>
-      <Section></Section>
-      <Section></Section>
-      <Section></Section>
-      <Section></Section>
-      <Section></Section>
-      <Section></Section>
-      <Section></Section>
-      <Section></Section>
-      <Section></Section>
     </div>
   );
 }
