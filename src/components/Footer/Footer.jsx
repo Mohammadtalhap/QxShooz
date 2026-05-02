@@ -1,0 +1,32 @@
+import React from "react";
+import DropdownTextLists from "../Header/DropdownTextLists";
+import footerData from "../../data/FooterData";
+import { borderAnimation } from "../../utils/styles";
+
+function Footer() {
+  const data = [...footerData];
+  return (
+    <div className="w-full bg-[#eaeae2] pt-50 pb-20 -translate-y-55">
+      <div className="grid grid-cols-5">
+        {data.map((item, index) => {
+          let hasBorderAnimation = false;
+          let liHover = false;
+          item.title ? ((hasBorderAnimation = true), (liHover = true)) : "";
+          return (
+            <DropdownTextLists
+              key={index}
+              item={item}
+              className="flex flex-col items-center text-center"
+              titleClass="uppercase tracking-[.10em] cursor-default!"
+              liClass="text-black/90 text-base"
+              {...{ liHoverEffect: liHover }}
+              spanClass={hasBorderAnimation ? borderAnimation : ""}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+export default Footer;

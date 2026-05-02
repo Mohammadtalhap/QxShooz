@@ -1,19 +1,34 @@
-function DropdownTextLists({ item }) {
+import React from "react";
+import Logo from "./Logo";
+
+function DropdownTextLists({
+  item,
+  imageTitle = false,
+  className = "",
+  titleClass = "",
+  olClass = "",
+  liClass = "",
+  liHoverEffect = true,
+  spanClass = "",
+}) {
   return (
-    <div key={"SubdivOf" + item.title}>
+    <div className={className} key={"SubdivOf" + item.title}>
+      {!item.title && <Logo className="py-0! mb-6"/>}
       {item.title && (
-        <h4 className="font-semibold mb-4 cursor-pointer">{item.title}</h4>
+        <h4 className={`font-semibold mb-4 cursor-pointer ${titleClass}`}>
+          {item.title}
+        </h4>
       )}
 
       <ol
-        className={`space-y-3 text-sm text-gray-600 font-normal tracking-normal ${item.listNumbering ? " list-inside list-decimal" : ""}`}
+        className={`space-y-3 text-sm text-gray-600 font-normal tracking-normal ${item.listNumbering ? " list-inside list-decimal" : ""} ${olClass}`}
       >
         {item.items.map((subItem, subIndex) => (
           <li
             key={"listItemOf" + subItem}
-            className="transition duration-300 hover:text-[#b63f4f] cursor-pointer w-fit"
+            className={`transition duration-300 w-full ${liHoverEffect ? "hover:text-[#b63f4f]  cursor-pointer" : ""} ${liClass}`}
           >
-            {subItem}
+            <span className={spanClass}>{subItem}</span>
           </li>
         ))}
       </ol>

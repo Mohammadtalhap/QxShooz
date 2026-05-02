@@ -1,0 +1,1 @@
+export const borderAnimation = "pb-1 bg-gradient-to-r from-[#b63f4f] to-[#b63f4f] bg-no-repeat bg-left-bottom bg-[length:0%_1px] hover:bg-[length:100%_1px] transition-all duration-300";
