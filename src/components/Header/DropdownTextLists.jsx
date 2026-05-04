@@ -13,7 +13,7 @@ function DropdownTextLists({
 }) {
   return (
     <div className={className} key={"SubdivOf" + item.title}>
-      {!item.title && <Logo className="py-0! mb-6"/>}
+      {imageTitle && <Logo className="py-0! mb-6"/>}
       {item.title && (
         <h4 className={`font-semibold mb-4 cursor-pointer ${titleClass}`}>
           {item.title}
