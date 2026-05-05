@@ -1,4 +1,5 @@
 import { FaAngleDown } from "react-icons/fa6";
+import { borderAnimation } from "../../utils/styles";
 import BlogDropdown from "./BlogDropdown";
 import Dropdown from "./Dropdown";
 import ProductDropdown from "./ProductDropdown";
@@ -6,10 +7,18 @@ import ShopDropdown from "./ShopDropdown";
 import PagesDropdown from "./PagesDropdown";
 
 function NavLinkItems({ title, hasDropdown, isActive, badge }) {
+  const link = {
+    Home: "/",
+    Shop: "/products",
+    Product: "/products",
+    Blog: "/",
+    Pages: "/products",
+    "Buy Now": "/",
+  };
   return (
     <a
-      href="#"
-      className={`relative group py-8 hover:text-[#b63f4f] ${isActive && "underline underline-offset-8 decoration-1 text-[#b63f4f]"}`}
+      href={`${link[title]}`}
+      className={`group py-8 hover:text-[#b63f4f] ${isActive ? "underline underline-offset-8 decoration-1 text-[#b63f4f]" : ""} ${title === "Pages" || title === "Buy Now" ? "relative" : ""}`}
     >
       {/* Badge */}
       {badge && (
@@ -19,7 +28,9 @@ function NavLinkItems({ title, hasDropdown, isActive, badge }) {
       )}
 
       {/* Title */}
-      <span className="flex gap-1 items-center">
+      <span
+        className={`flex gap-1 items-center ${isActive ? "" : "pb-1 bg-linear-to-r from-[#b63f4f] to-[#b63f4f] bg-no-repeat bg-bottom-left bg-size-[0%_1px] group-hover:bg-size-[100%_1px] transition-all duration-300"}`}
+      >
         {title}
         {hasDropdown && <FaAngleDown className="text-xs" />}
       </span>
@@ -47,11 +58,6 @@ function NavLinkItems({ title, hasDropdown, isActive, badge }) {
         <Dropdown fullWidth={false}>
           <PagesDropdown />
         </Dropdown>
-      )}
-
-      {/* Hover Under Line */}
-      {!isActive && (
-        <span className="absolute left-0 bottom-7 w-0 h-px bg-[#b63f4f] transition-all duration-300 group-hover:w-full"></span>
       )}
     </a>
   );

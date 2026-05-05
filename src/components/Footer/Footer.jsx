@@ -3,10 +3,10 @@ import DropdownTextLists from "../Header/DropdownTextLists";
 import footerData from "../../data/FooterData";
 import { borderAnimation } from "../../utils/styles";
 
-function Footer() {
+function Footer({ className = "" }) {
   const data = [...footerData];
   return (
-    <div className="w-full bg-[#eaeae2] pt-50 pb-20 -mt-35">
+    <div className={`w-full bg-[#eaeae2] pb-20 ${className}`}>
       <div className="grid grid-cols-5">
         {data.map((item, index) => {
           let hasBorderAnimation = false;

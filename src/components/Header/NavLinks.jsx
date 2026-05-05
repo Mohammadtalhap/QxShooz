@@ -11,7 +11,7 @@ function NavLinks() {
     { title: "Buy Now", badge: "Sale" },
   ];
   return (
-    <nav className="hidden relative lg:flex items-center gap-8 font-medium tracking-widest">
+    <nav className="hidden lg:flex items-center gap-8 font-medium tracking-widest">
         {navItems.map((item, index) =>(
             <NavLinkItems key={index} {...item} />
         ))}

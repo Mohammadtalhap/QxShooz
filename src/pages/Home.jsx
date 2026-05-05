@@ -2,7 +2,6 @@ import { useState } from "react";
 import Section from "../components/Section";
 
 import Button from "../components/Button";
-import Footer from "../components/Footer/Footer";
 import Section10BlogPosts from "../components/Section10BlogPosts";
 import Section11SubscribeForm from "../components/Section11SubscribeForm";
 import Section1Slideshow from "../components/Section1Slideshow";
@@ -83,7 +82,7 @@ function Home() {
       </Section>
 
       <Section fullWidth>
-        <div className="w-full bg-linear-to-r from-[#946cc1] via-[#784473] to-[#b13a44] py-6 flex justify-around items-center">
+        <div className="w-full bg-gradient-to-r from-[#946cc1] via-[#784473] to-[#b13a44] py-6 flex justify-around items-center">
           <p className="text-white text-xl">
             Discover Our Stores: Your Local Shoe Haven
           </p>

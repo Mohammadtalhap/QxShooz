@@ -4,7 +4,7 @@ import Navbar from './Navbar'
 
 function Header() {
   return (
-    <header>
+    <header className='border-b border-black/10'>
         <TopHeader />
         <Navbar />
     </header>
