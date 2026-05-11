@@ -8,7 +8,7 @@ function Section6BannersGrid() {
   );
 
   return (
-    <div className="grid grid-cols-6 gap-6">
+    <div className="flex flex-col xl:grid xl:grid-cols-6 gap-6">
       {productData.map((product, index) => {
         const colSpan = product.id === "banner-4" || product.id === "banner-5" ? "col-span-3" : "col-span-2";
         return (
@@ -18,7 +18,7 @@ function Section6BannersGrid() {
             cardSize="h2" 
             className={`${colSpan} text-white`}
             tagClass="text-xs"
-            titleClass="w-2/3 leading-10"
+            titleClass="w-2/3 lg:leading-10"
           />
         );
       })}

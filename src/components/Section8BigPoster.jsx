@@ -6,7 +6,7 @@ import { FaPlay } from "react-icons/fa";
 
 function Section8BigPoster() {
   return (
-    <div className="grid grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <div className="content">
         <Title
           titleDetail={{
@@ -19,7 +19,7 @@ function Section8BigPoster() {
           }}
           className="h-full w-full gap-6"
           commonClass="text-black"
-          titleClass="w-110 leading-16"
+          titleClass="w-110 max-w-full lg:leading-16"
           titleDetailClass="whitespace-pre-wrap text-justify pr-5"
         >
           <Button

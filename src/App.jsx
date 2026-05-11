@@ -9,7 +9,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <TopBar
         offerCount={2}
         className="from-[#8f6abd] via-[#7e446f] to-[#b73d47]"

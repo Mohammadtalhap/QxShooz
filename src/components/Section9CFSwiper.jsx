@@ -12,8 +12,18 @@ function Section9CFSwiper({ customerFeedbacks, className }) {
         rows: 2,
         fill: "row",
       }}
-      slidesPerView={5}
-      spaceBetween={30}
+      slidesPerView={2}
+      spaceBetween={15}
+      breakpoints={{
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+        1024: {
+          slidesPerView: 5,
+          spaceBetween: 35,
+        },
+      }}
       speed={600}
     >
       {customerFeedbacks.map((feedback, index) => (

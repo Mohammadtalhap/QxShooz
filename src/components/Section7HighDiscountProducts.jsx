@@ -20,7 +20,7 @@ function Section7HighDiscountProducts() {
   const lastRowStart = total - itemsInLastRow;
 
   return (
-    <div className="grid grid-cols-3 gap-8">
+    <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {highDiscount.map((product, index) => {
         const hasBorder = index < lastRowStart;
         return (

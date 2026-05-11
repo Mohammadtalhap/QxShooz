@@ -43,19 +43,19 @@ function Home() {
         <Section3Shop activeTab={activeTab} />
       </Section>
 
-      <Section fullWidth className="mt-16">
+      <Section fullWidth className="mt-16 flex flex-col">
         <Section4AdvertisementPoster />
         <TopBar
           offerCount={2}
           fullWidth
           removeDismissal
-          className="from-[#587728] via-[#bd6417] to-[#e8252f] py-2"
-          textClass="xl:text-xl xl:font-normal"
+          className="from-[#587728] via-[#bd6417] to-[#e8252f] py-1 sm:py-2"
+          textClass="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl xl:font-normal"
         />
       </Section>
 
       <Section>
-        <Title titleDetail={titleDetails[2]} />
+        <Title titleDetail={titleDetails[2]} commonClass="" titleDetailClass="w-80!"/>
       </Section>
       <Section>
         <Section5CollectionPosters />
@@ -114,7 +114,7 @@ function Home() {
         <Section10BlogPosts />
       </Section>
 
-      <Section className="z-2">
+      <Section fullWidth className="z-2 xl:px-15">
         <Section11SubscribeForm />
       </Section>
     </div>

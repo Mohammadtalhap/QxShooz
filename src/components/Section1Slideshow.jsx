@@ -18,7 +18,12 @@ function Section1Slideshow() {
       speed={1000}
       loop={true}
       autoplay={{ delay: 4000 }}
-      pagination={{ clickable: true }}
+      pagination={{ 
+        clickable: true,
+        dynamicBullets: true,
+        dynamicMainBullets: 3,
+      }}
+      className="w-full"
     >
       {imageData.map((slide, index) => (
         <SwiperSlide className="group" key={index}>

@@ -20,7 +20,7 @@ function BlogPost({ post, postType = "outsideContent", hoverText = true }) {
 
   return (
     <div className={`group relative h-full ${className}`}>
-      <a href="#" className={`img-wrapper block h-full overflow-hidden ${wrapperClass}`}>
+      <a href="#" className={`img-wrapper block ${hasOverlay ? "h-80" : "h-20"} xl:h-full overflow-hidden ${wrapperClass}`}>
         <img
           src={post.imageSrc}
           alt={post.title}
@@ -32,9 +32,9 @@ function BlogPost({ post, postType = "outsideContent", hoverText = true }) {
       )}
 
       <div className={`flex flex-col gap-4 ${contentClass}`}>
-        <div className="header-box flex gap-8">
-          <p className="date">{post.dateOfPublished}</p>
-          <p className="comments flex gap-2 items-center">
+        <div className="header-box flex gap-6 lg:gap-8">
+          <p className="date text-xs md:text-sm lg:text-base">{post.dateOfPublished}</p>
+          <p className="comments flex gap-2 items-center text-xs md:text-sm lg:text-base">
             {" "}
             <FaRegCommentDots />
             {post.noOfComments} comments
@@ -42,7 +42,7 @@ function BlogPost({ post, postType = "outsideContent", hoverText = true }) {
         </div>
         <a
           href="#"
-          className={`title-box text-2xl font-semibold ${hoverText ? "transition-colors duration-300 hover:text-[#b63f4f]" : ""}`}
+          className={`title-box md:text-xl lg:text-2xl font-semibold ${hoverText ? "transition-colors duration-300 hover:text-[#b63f4f]" : ""}`}
         >
           {post.title}
         </a>

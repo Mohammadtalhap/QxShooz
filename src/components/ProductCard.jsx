@@ -69,13 +69,13 @@ function ProductCard({ cardObject }) {
           <div className="productBrand text-gray-500 ">{cardObject.brand}</div>
         </div>
         {/* Product Hover Form */}
-        <div className="hoverForm absolute bottom-0 left-0 w-full bg-white px-3 mt-3 py-3 border-t border-dotted border-gray-400 translate-y-full group-hover/mainBox:translate-y-0 group-hover/mainBox:block transition duration-500">
+        <div className="hoverForm block md:absolute bottom-0 left-0 w-full bg-white px-3 mt-3 py-3 border-t border-dotted border-gray-400 md:translate-y-full md:group-hover/mainBox:translate-y-0 md:group-hover/mainBox:block transition duration-500">
           <div className="flex justify-between items-center">
             <span className="uppercase flex items-center gap-1 font-medium text-sm cursor-pointer">
               <PiShoppingCartSimpleLight className="text-lg" />
               Add To Cart
             </span>
-            <div className="actionButtons flex items-center gap-3">
+            <div className="actionButtons hidden md:flex items-center gap-3">
               <LuEye className="cursor-pointer" />
               <FaRegHeart className="" />
               <AiOutlineSwap className="cursor-pointer" />

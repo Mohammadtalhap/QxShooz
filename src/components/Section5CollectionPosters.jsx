@@ -14,8 +14,7 @@ function Section5CollectionPosters() {
 
   return (
     <div
-      className={`grid gap-8`}
-      style={{ gridTemplateColumns: `repeat(${filteredData.length}, minmax(0, 1fr))` }}
+      className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8`}
     >
       {filteredData.map((product, index) => (
         <div key={index} className="relative flex flex-col justify-center items-center">
@@ -26,7 +25,7 @@ function Section5CollectionPosters() {
               className="h-full w-full size-cover cursor-pointer hover:scale-110 transition duration-800"
             />
           </div>
-          <Button className="absolute bottom-6 font-semibold!" text={product.name} textUppercase={false} variant="primaryBtnWhite" size="xl" href="/" />
+          <Button className="absolute bottom-6 font-semibold! text-sm lg:text-lg" text={product.name} textUppercase={false} variant="primaryBtnWhite" size="xl" href="/" />
         </div>
       ))}
     </div>

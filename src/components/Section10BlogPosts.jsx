@@ -6,7 +6,7 @@ import blogPostsData from "../data/BlogPostsData";
 function Section10BlogPosts() {
   const posts = [...blogPostsData];
   return (
-    <div className="grid grid-cols-2 grid-rows-3 h-120 gap-5">
+    <div className="flex flex-col xl:grid grid-cols-2 grid-rows-3 xl:h-120 gap-5">
       {posts.map((post, index) => {
         let postType = "outsideContent";
         let rowSpan = "";

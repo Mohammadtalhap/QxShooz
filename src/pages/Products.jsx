@@ -8,11 +8,15 @@ import { borderAnimation } from "../utils/styles";
 import collectionPosters from "../data/Section5CPData";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
+import SidebarFilters from "../components/SidebarFilters";
+import ProductsGridWithFilters from "../components/ProductsGridWithFilters";
 
 function Products() {
   const location = useLocation();
   const pathSegments = location.pathname.split("/").filter(Boolean);
-  const displayName = pathSegments[1] ? pathSegments[1].replaceAll("-", " ") : "Products";
+  const displayName = pathSegments[1]
+    ? pathSegments[1].replaceAll("-", " ")
+    : "Products";
   const productsData = [...products];
   const collectionsData = getCollectionsWithCount(
     productsData,
@@ -22,9 +26,11 @@ function Products() {
 
   let collectionImage = "";
   collectionsData.forEach((collection) => {
-    createSlug(collection.name).replaceAll("-", " ") === displayName ? collectionImage = collection.imageSrc : "";
+    createSlug(collection.name).replaceAll("-", " ") === displayName
+      ? (collectionImage = collection.imageSrc)
+      : "";
   });
-  console.log(collectionImage);
+  let filtersMenu = true;
 
   return (
     <div className="">
@@ -41,7 +47,11 @@ function Products() {
       <Section fullWidth>
         <div className="img-wrapper relative h-80 w-full">
           <img
-            src={collectionImage ? collectionImage : "https://qx-shooz.myshopify.com/cdn/shop/collections/col-2.png?v=1731657969&width=360"}
+            src={
+              collectionImage
+                ? collectionImage
+                : "https://qx-shooz.myshopify.com/cdn/shop/collections/col-2.png?v=1731657969&width=360"
+            }
             alt="big poster"
             className="h-full w-full object-cover"
           />
@@ -55,7 +65,7 @@ function Products() {
 
       <Section>
         <div className="w-full py-6 border-b-2 border-[#e9e9e9]">
-          <div className="flex justify-center gap-6">
+          <div className="grid grid-cols-1 md:flex justify-center gap-1 md:gap-3 lg:gap-6">
             {collectionsData.map((collection) => (
               <Link
                 key={collection.name}
@@ -103,7 +113,7 @@ function Products() {
                   />
                 </div>
                 <div className="absolute inset-0 bg-black/20"></div>
-                <div className="absolute inset-0 flex flex-col justify-center items-center gap-3 text-white text-xl transition duration-500 font-semibold translate-y-6 group-hover:translate-y-0">
+                <div className="absolute inset-0 flex flex-col justify-center items-center gap-3 text-white text-sm md:text-base lg:text-lg xl:text-xl transition duration-500 font-semibold translate-y-6 group-hover:translate-y-0">
                   <p className="">{collection.name}</p>
                   <p className="font-normal text-base opacity-0 visibility-hidden transition duration-500 group-hover:opacity-100 group-hover:visibility-visible">
                     {collection.count} Products
@@ -116,14 +126,18 @@ function Products() {
       </Section>
 
       <Section>
-        <div className="grid grid-cols-4 gap-8">
-          <div className="bg-amber-400 h-500">
-            
-          </div>
-          <div className="col-span-3 h-500 bg-fuchsia-400"></div>
+        <div className="grid md:grid-cols-[160px_1fr] lg:grid-cols-[240px_1fr] xl:grid-cols-[320px_1fr] gap-15 pb-20">
+          {/* Left Sidebar */}
+          <aside className="hidden md:flex filters">
+            <SidebarFilters />
+          </aside>
+
+          {/* Right Content */}
+          <section className="products">
+            <ProductsGridWithFilters />
+          </section>
         </div>
       </Section>
-      
     </div>
   );
 }

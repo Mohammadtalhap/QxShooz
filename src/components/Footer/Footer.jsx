@@ -7,7 +7,7 @@ function Footer({ className = "" }) {
   const data = [...footerData];
   return (
     <div className={`w-full bg-[#eaeae2] pb-20 ${className}`}>
-      <div className="grid grid-cols-5">
+      <div className="flex flex-col gap-12 md:gap-0 md:grid grid-cols-5">
         {data.map((item, index) => {
           let hasBorderAnimation = false;
           let liHover = false;

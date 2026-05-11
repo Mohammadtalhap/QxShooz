@@ -19,19 +19,19 @@ function TopBar({
 
   return (
     <div
-      className={`w-full bg-linear-to-r text-white text-sm px-0 ${fullWidth ? "" : "xl:px-15"} ${className} `}
+      className={`w-full bg-linear-to-r text-white px-0 ${fullWidth ? "" : "xl:px-15"} ${className}`}
     >
-      <div className="flex items-center px-4 py-2 overflow-hidden">
+      <div className="flex items-center px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-2 overflow-hidden">
         {/* Scrolling Text */}
         <div className="whitespace-nowrap animate-marquee flex gap-20 md:gap-30 lg:gap-60">
           {[...offers, ...offers, ...offers].map((offer, index) => (
-            <span key={index} className={`text-sm md:text-base font-semibold ${textClass}`}>
+            <span key={index} className={`text-xs sm:text-sm md:text-base font-semibold ${textClass}`}>
               {offer}
               {!removeDismissal && (
-                <span className="ml-2">
+                <span className="ml-1 sm:ml-2">
                   <button
                     onClick={() => setShowTopBar(false)}
-                    className="text-sm md:text-base underline underline-offset-4 text-[#fefdfd] opacity-80 cursor-pointer"
+                    className="text-xs sm:text-sm md:text-base underline underline-offset-2 sm:underline-offset-3 md:underline-offset-4 text-[#fefdfd] opacity-80 cursor-pointer hover:opacity-100 transition-opacity"
                   >
                     Dismiss
                   </button>
