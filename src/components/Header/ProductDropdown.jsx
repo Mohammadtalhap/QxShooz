@@ -3,7 +3,7 @@ import products from "../../data/Products";
 import ProductCard from "../ProductCard";
 import DropdownTextLists from "./DropdownTextLists";
 
-function ProductDropdown() {
+function ProductDropdown({ wishlist, setWishlist, toggleWishlist, cartItems, setCartItems, addToCart }) {
 
   const productDropdownImages = [products.find((product) => product.title === "Waterproof Hiking Boots")];
 
@@ -26,7 +26,7 @@ function ProductDropdown() {
 
       {/* Image Columns */}
       {productDropdownImages.map((image, index) => (
-        <ProductCard key={image.title} cardObject={image} />
+        <ProductCard key={image.title} cardObject={image} wishlist={wishlist} setWishlist={setWishlist} toggleWishlist={toggleWishlist} cartItems={cartItems} setCartItems={setCartItems} addToCart={addToCart} />
       ))}
     </div>
   );

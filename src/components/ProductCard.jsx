@@ -1,10 +1,10 @@
+import { Heart } from "lucide-react";
 import { AiOutlineSwap } from "react-icons/ai";
-import { FaRegHeart } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
 import Button from "./Button";
 
-function ProductCard({ cardObject }) {
+function ProductCard({ cardObject, wishlist, setWishlist, toggleWishlist, cartItems, setCartItems, addToCart }) {
   const base = "absolute top-0 left-0 m-3 rounded-sm tracking-tighter z-10";
   const variants = {
     sale: base + " bg-[#84c8bb] text-white",
@@ -71,14 +71,16 @@ function ProductCard({ cardObject }) {
         {/* Product Hover Form */}
         <div className="hoverForm block md:absolute bottom-0 left-0 w-full bg-white px-3 mt-3 py-3 border-t border-dotted border-gray-400 md:translate-y-full md:group-hover/mainBox:translate-y-0 md:group-hover/mainBox:block transition duration-500">
           <div className="flex justify-between items-center">
-            <span className="uppercase flex items-center gap-1 font-medium text-sm cursor-pointer">
+            <button onClick={(e) => { e.preventDefault(); addToCart(cardObject.id); }} className="uppercase flex items-center gap-1 font-medium text-sm cursor-pointer">
               <PiShoppingCartSimpleLight className="text-lg" />
               Add To Cart
-            </span>
+            </button>
             <div className="actionButtons hidden md:flex items-center gap-3">
-              <LuEye className="cursor-pointer" />
-              <FaRegHeart className="" />
-              <AiOutlineSwap className="cursor-pointer" />
+              <button className="cursor-pointer"><LuEye /></button>
+              <button className="cursor-pointer" onClick={(e) => { e.preventDefault(); toggleWishlist(cardObject.id); }}>
+                <Heart size={18} fill={wishlist.includes(cardObject.id) ? "black" : "none"} />
+              </button>
+              <button className="cursor-pointer"><AiOutlineSwap /></button>
             </div>
           </div>
         </div>

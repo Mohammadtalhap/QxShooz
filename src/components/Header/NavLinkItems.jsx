@@ -6,7 +6,7 @@ import ProductDropdown from "./ProductDropdown";
 import ShopDropdown from "./ShopDropdown";
 import PagesDropdown from "./PagesDropdown";
 
-function NavLinkItems({ title, hasDropdown, isActive, badge }) {
+function NavLinkItems({ title, hasDropdown, isActive, badge, wishlist, setWishlist, toggleWishlist, cartItems, setCartItems, addToCart }) {
   const link = {
     Home: "/",
     Shop: "/products",
@@ -44,7 +44,7 @@ function NavLinkItems({ title, hasDropdown, isActive, badge }) {
 
       {title === "Product" && (
         <Dropdown>
-          <ProductDropdown />
+          <ProductDropdown wishlist={wishlist} setWishlist={setWishlist} toggleWishlist={toggleWishlist} cartItems={cartItems} setCartItems={setCartItems} addToCart={addToCart} />
         </Dropdown>
       )}
 

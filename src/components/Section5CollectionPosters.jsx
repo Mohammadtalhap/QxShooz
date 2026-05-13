@@ -10,7 +10,6 @@ function Section5CollectionPosters() {
   const filteredData = getCollectionsWithCount(productsData, collectionData)
   .sort((a, b) => a.id.localeCompare(b.id))
   .slice(0, 4);
-  console.log(filteredData);
 
   return (
     <div

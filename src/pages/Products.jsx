@@ -11,7 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SidebarFilters from "../components/SidebarFilters";
 import ProductsGridWithFilters from "../components/ProductsGridWithFilters";
 
-function Products() {
+function Products({ wishlist, setWishlist, toggleWishlist, cartItems, setCartItems, addToCart }) {
   const location = useLocation();
   const pathSegments = location.pathname.split("/").filter(Boolean);
   const displayName = pathSegments[1]
@@ -22,7 +22,6 @@ function Products() {
     productsData,
     collectionPosters,
   ).sort((a, b) => a.name.localeCompare(b.name));
-  console.log(displayName);
 
   let collectionImage = "";
   collectionsData.forEach((collection) => {
@@ -134,7 +133,7 @@ function Products() {
 
           {/* Right Content */}
           <section className="products">
-            <ProductsGridWithFilters />
+            <ProductsGridWithFilters wishlist={wishlist} setWishlist={setWishlist} toggleWishlist={toggleWishlist} cartItems={cartItems} setCartItems={setCartItems} addToCart={addToCart} />
           </section>
         </div>
       </Section>

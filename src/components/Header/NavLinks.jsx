@@ -1,7 +1,7 @@
 
 import NavLinkItems from "./NavLinkItems.jsx";
 
-function NavLinks() {
+function NavLinks({ wishlist, setWishlist, toggleWishlist, cartItems, setCartItems, addToCart }) {
   const navItems = [
     { title: "Home", isActive: true },
     { title: "Shop", hasDropdown: true },
@@ -13,7 +13,7 @@ function NavLinks() {
   return (
     <nav className="hidden lg:flex items-center gap-8 font-medium tracking-widest">
         {navItems.map((item, index) =>(
-            <NavLinkItems key={index} {...item} />
+            <NavLinkItems key={index} {...item} wishlist={wishlist} setWishlist={setWishlist} toggleWishlist={toggleWishlist} cartItems={cartItems} setCartItems={setCartItems} addToCart={addToCart} />
         ))}
     </nav>
   );

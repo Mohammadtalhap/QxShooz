@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import products from "../data/Products";
 import ProductCard from "./ProductCard";
 
-function Section3Shop({ activeTab }) {
+function Section3Shop({ activeTab, wishlist, setWishlist, toggleWishlist, cartItems, setCartItems, addToCart }) {
   const filteredProducts = products.filter(
     (product) => product.tag === activeTab,
   );
@@ -32,7 +32,7 @@ function Section3Shop({ activeTab }) {
     >
       {filteredProducts.map((product, index) => (
         <SwiperSlide key={index}>
-          <ProductCard cardObject={product} />
+          <ProductCard wishlist={wishlist} setWishlist={setWishlist} toggleWishlist={toggleWishlist} cardObject={product} cartItems={cartItems} setCartItems={setCartItems} addToCart={addToCart} />
         </SwiperSlide>
       ))}
     </Swiper>

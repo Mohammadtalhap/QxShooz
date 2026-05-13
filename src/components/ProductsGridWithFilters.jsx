@@ -8,7 +8,7 @@ import ProductCard from "./ProductCard";
 import { href } from "react-router-dom";
 import { useRef } from "react";
 
-function ProductsGridWithFilters() {
+function ProductsGridWithFilters({ wishlist, setWishlist, toggleWishlist, cartItems, setCartItems, addToCart }) {
   const productsData = [...products];
   const [columnNumber, setColumnNumber] = useState(2);
   const [currentPage, setCurrentPage] = useState(1);
@@ -77,7 +77,7 @@ function ProductsGridWithFilters() {
         className={`grid gap-8 mt-8 ${columnNumber === 2 ? "grid-cols-2" : columnNumber === 3 ? "grid-cols-3" : "grid-cols-4"}`}
       >
         {visibleProducts.map((product, index) => (
-          <ProductCard key={index} cardObject={product} />
+          <ProductCard key={index} cardObject={product} wishlist={wishlist} setWishlist={setWishlist} toggleWishlist={toggleWishlist} cartItems={cartItems} setCartItems={setCartItems} addToCart={addToCart} />
         ))}
       </div>
       <div className="w-full flex justify-center items-center gap-2 mt-18">

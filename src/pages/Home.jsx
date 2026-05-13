@@ -19,7 +19,7 @@ import TopBar from "../components/TopBar";
 import customerFeedbacks from "../data/customerFeedbacks";
 import sectiontitles from "../data/SectionTitles";
 
-function Home() {
+function Home({ wishlist, setWishlist, toggleWishlist, cartItems, setCartItems, addToCart }) {
   const titleDetails = [...sectiontitles];
   const [activeTab, setActiveTab] = useState("featured");
 
@@ -40,7 +40,7 @@ function Home() {
         <Section3Buttons activeTab={activeTab} setActiveTab={setActiveTab} />
       </Section>
       <Section>
-        <Section3Shop activeTab={activeTab} />
+        <Section3Shop wishlist={wishlist} setWishlist={setWishlist} toggleWishlist={toggleWishlist} activeTab={activeTab} cartItems={cartItems} setCartItems={setCartItems} addToCart={addToCart} />
       </Section>
 
       <Section fullWidth className="mt-16 flex flex-col">
