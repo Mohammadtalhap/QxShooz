@@ -3,8 +3,26 @@ import { AiOutlineSwap } from "react-icons/ai";
 import { LuEye } from "react-icons/lu";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
 import Button from "./Button";
+import { useState } from "react";
 
-function ProductCard({ cardObject, wishlist, setWishlist, toggleWishlist, cartItems, setCartItems, addToCart }) {
+function ProductCard({
+  cardObject,
+  wishlist,
+  setWishlist,
+  toggleWishlist,
+  cartItems,
+  setCartItems,
+  addToCart,
+}) {
+  const [isAdding, setIsAdding] = useState(false);
+  const handleAddToCart = async () => {
+    setIsAdding(true);
+    addToCart(cardObject.id);
+    setTimeout(() => {
+      setIsAdding(false);
+    }, 1000);
+  };
+
   const base = "absolute top-0 left-0 m-3 rounded-sm tracking-tighter z-10";
   const variants = {
     sale: base + " bg-[#84c8bb] text-white",
@@ -13,7 +31,7 @@ function ProductCard({ cardObject, wishlist, setWishlist, toggleWishlist, cartIt
   let classes = "";
   let tagText = "";
   let hasTag = false;
-  
+
   if (!cardObject.availability) {
     classes = variants.sold;
     tagText = "Sold Out";
@@ -71,16 +89,37 @@ function ProductCard({ cardObject, wishlist, setWishlist, toggleWishlist, cartIt
         {/* Product Hover Form */}
         <div className="hoverForm block md:absolute bottom-0 left-0 w-full bg-white px-3 mt-3 py-3 border-t border-dotted border-gray-400 md:translate-y-full md:group-hover/mainBox:translate-y-0 md:group-hover/mainBox:block transition duration-500">
           <div className="flex justify-between items-center">
-            <button onClick={(e) => { e.preventDefault(); addToCart(cardObject.id); }} className="uppercase flex items-center gap-1 font-medium text-sm cursor-pointer">
+            <button
+              onClick={handleAddToCart}
+              disabled={isAdding}
+              className="uppercase flex items-center gap-1 font-medium text-sm cursor-pointer"
+            >
               <PiShoppingCartSimpleLight className="text-lg" />
-              Add To Cart
+              {isAdding ? (
+                <div className="h-4 w-4 rounded-full border-2 border-black border-t-transparent animate-spin"></div>
+              ) : (
+                "Add to cart"
+              )}
             </button>
             <div className="actionButtons hidden md:flex items-center gap-3">
-              <button className="cursor-pointer"><LuEye /></button>
-              <button className="cursor-pointer" onClick={(e) => { e.preventDefault(); toggleWishlist(cardObject.id); }}>
-                <Heart size={18} fill={wishlist.includes(cardObject.id) ? "black" : "none"} />
+              <button className="cursor-pointer">
+                <LuEye />
               </button>
-              <button className="cursor-pointer"><AiOutlineSwap /></button>
+              <button
+                className="cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleWishlist(cardObject.id);
+                }}
+              >
+                <Heart
+                  size={18}
+                  fill={wishlist.includes(cardObject.id) ? "black" : "none"}
+                />
+              </button>
+              <button className="cursor-pointer">
+                <AiOutlineSwap />
+              </button>
             </div>
           </div>
         </div>
