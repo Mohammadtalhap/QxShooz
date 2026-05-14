@@ -1,15 +1,13 @@
-import React from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Section from "../components/Section";
-import { createSlug } from "../utils/styles";
-import products from "../data/Products";
-import { getCollectionsWithCount } from "../utils/styles";
-import { borderAnimation } from "../utils/styles";
-import collectionPosters from "../data/Section5CPData";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SidebarFilters from "../components/SidebarFilters";
 import ProductsGridWithFilters from "../components/ProductsGridWithFilters";
+import Section from "../components/Section";
+import SidebarFilters from "../components/SidebarFilters";
+import products from "../data/Products";
+import collectionPosters from "../data/Section5CPData";
+import { borderAnimation, createSlug, getCollectionsWithCount } from "../utils/styles";
 
 function Products({ wishlist, setWishlist, toggleWishlist, cartItems, setCartItems, addToCart }) {
   const location = useLocation();
@@ -30,6 +28,12 @@ function Products({ wishlist, setWishlist, toggleWishlist, cartItems, setCartIte
       : "";
   });
   let filtersMenu = true;
+
+  const [searchText, setSearchText] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [sortOption, setSortOption] = useState("default");
+
+  const filteredProducts = [];
 
   return (
     <div className="">
@@ -133,7 +137,7 @@ function Products({ wishlist, setWishlist, toggleWishlist, cartItems, setCartIte
 
           {/* Right Content */}
           <section className="products">
-            <ProductsGridWithFilters wishlist={wishlist} setWishlist={setWishlist} toggleWishlist={toggleWishlist} cartItems={cartItems} setCartItems={setCartItems} addToCart={addToCart} />
+            <ProductsGridWithFilters products={filteredProducts} wishlist={wishlist} setWishlist={setWishlist} toggleWishlist={toggleWishlist} cartItems={cartItems} setCartItems={setCartItems} addToCart={addToCart} />
           </section>
         </div>
       </Section>

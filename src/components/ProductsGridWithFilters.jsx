@@ -3,12 +3,11 @@ import { IoReorderThreeOutline } from "react-icons/io5";
 import { LiaGripLinesVerticalSolid } from "react-icons/lia";
 import { RxDragHandleVertical } from "react-icons/rx";
 import { FaFilter } from "react-icons/fa6";
-import products from "../data/Products";
 import ProductCard from "./ProductCard";
 import { href } from "react-router-dom";
 import { useRef } from "react";
 
-function ProductsGridWithFilters({ wishlist, setWishlist, toggleWishlist, cartItems, setCartItems, addToCart }) {
+function ProductsGridWithFilters({ products, wishlist, setWishlist, toggleWishlist, cartItems, setCartItems, addToCart }) {
   const productsData = [...products];
   const [columnNumber, setColumnNumber] = useState(2);
   const [currentPage, setCurrentPage] = useState(1);
