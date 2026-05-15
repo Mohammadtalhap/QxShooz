@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { LiaGripLinesVerticalSolid } from "react-icons/lia";
 import { RxDragHandleVertical } from "react-icons/rx";
@@ -7,8 +7,19 @@ import ProductCard from "./ProductCard";
 import { href } from "react-router-dom";
 import { useRef } from "react";
 
-function ProductsGridWithFilters({ products, wishlist, setWishlist, toggleWishlist, cartItems, setCartItems, addToCart }) {
-  const productsData = [...products];
+function ProductsGridWithFilters({
+  products,
+  wishlist,
+  setWishlist,
+  toggleWishlist,
+  cartItems,
+  setCartItems,
+  addToCart,
+  sortOption,
+  setSortOption,
+  selectedFilters,
+}) {
+  let productsData = [...products];
   const [columnNumber, setColumnNumber] = useState(2);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
@@ -22,11 +33,17 @@ function ProductsGridWithFilters({ products, wishlist, setWishlist, toggleWishli
   const handleScroll = () => {
     targetRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+  useEffect(() => {
+    handleScroll();
+  }, [productsData ,sortOption]);
 
   return (
     <div className="">
       {/* Top Section */}
-      <div ref={targetRef} className="md:hidden lg:flex justify-between items-center">
+      <div
+        ref={targetRef}
+        className="md:hidden lg:flex justify-between items-center"
+      >
         {/* Column Buttons */}
         <div className="hidden renderButtons lg:flex items-center">
           <button
@@ -52,16 +69,20 @@ function ProductsGridWithFilters({ products, wishlist, setWishlist, toggleWishli
         <div className="w-full lg:w-auto flex items-center justify-between gap-15">
           <div className="hidden sort-select lg:flex gap-4">
             <span className="font-medium">Sort By:</span>
-            <select className="outline-none">
-              <option>Featured</option>
-              <option>Most Relevant</option>
-              <option>Best Selling</option>
-              <option>Alphabetically, A-Z</option>
-              <option>Alphabetically, Z-A</option>
-              <option>Price, low to high</option>
-              <option>Price, high to low</option>
-              <option>Date, new to old</option>
-              <option>Date, old to new</option>
+            <select
+              value={sortOption}
+              onChange={(e) => setSortOption(e.target.value)}
+              className="outline-none"
+            >
+              <option value="featured">Featured</option>
+              <option value="relevant">Most Relevant</option>
+              <option value="best-selling">Best Selling</option>
+              <option value="name-a-z">Alphabetically, A-Z</option>
+              <option value="name-z-a">Alphabetically, Z-A</option>
+              <option value="price-low-high">Price, low to high</option>
+              <option value="price-high-low">Price, high to low</option>
+              <option value="date-new-old">Date, new to old</option>
+              <option value="date-old-new">Date, old to new</option>
             </select>
           </div>
           <button className="lg:hidden flex items-center gap-2">
@@ -76,7 +97,16 @@ function ProductsGridWithFilters({ products, wishlist, setWishlist, toggleWishli
         className={`grid gap-8 mt-8 ${columnNumber === 2 ? "grid-cols-2" : columnNumber === 3 ? "grid-cols-3" : "grid-cols-4"}`}
       >
         {visibleProducts.map((product, index) => (
-          <ProductCard key={index} cardObject={product} wishlist={wishlist} setWishlist={setWishlist} toggleWishlist={toggleWishlist} cartItems={cartItems} setCartItems={setCartItems} addToCart={addToCart} />
+          <ProductCard
+            key={index}
+            cardObject={product}
+            wishlist={wishlist}
+            setWishlist={setWishlist}
+            toggleWishlist={toggleWishlist}
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+            addToCart={addToCart}
+          />
         ))}
       </div>
       <div className="w-full flex justify-center items-center gap-2 mt-18">
@@ -84,7 +114,6 @@ function ProductsGridWithFilters({ products, wishlist, setWishlist, toggleWishli
           <button
             key={index}
             onClick={() => {
-              handleScroll();
               setCurrentPage(page);
             }}
             className={`h-10 w-10 flex justify-center items-center border border-[#e2e2e2] ${currentPage === page ? "bg-[#b63f4f] text-white" : "bg-white text-black cursor-pointer"}`}

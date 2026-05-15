@@ -1,13 +1,18 @@
 import FiltersData from "../data/FiltersData";
 import FilterSection from "./FilterSection";
 
-function SidebarFilters({ filtersMenu = true }) {
+function SidebarFilters({ filtersMenu = true, selectedFilters, toggleFilter }) {
   const filtersData = [...FiltersData];
   return (
     <div className="flex flex-col gap-5">
       <h1 className="text-2xl font-medium">Filter:</h1>
       {filtersData.map((filter) => (
-        <FilterSection key={filter.id} data={filter} />
+        <FilterSection
+          key={filter.id}
+          filter={filter}
+          selectedFilters={selectedFilters}
+          toggleFilter={toggleFilter}
+        />
       ))}
     </div>
   );

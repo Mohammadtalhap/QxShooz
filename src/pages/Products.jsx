@@ -7,17 +7,32 @@ import Section from "../components/Section";
 import SidebarFilters from "../components/SidebarFilters";
 import products from "../data/Products";
 import collectionPosters from "../data/Section5CPData";
-import { borderAnimation, createSlug, getCollectionsWithCount } from "../utils/styles";
+import {
+  borderAnimation,
+  createSlug,
+  getCollectionsWithCount,
+} from "../utils/styles";
+import { Features } from "tailwindcss";
+import { CgProductHunt } from "react-icons/cg";
 
-function Products({ wishlist, setWishlist, toggleWishlist, cartItems, setCartItems, addToCart }) {
+function Products({
+  wishlist,
+  setWishlist,
+  toggleWishlist,
+  cartItems,
+  setCartItems,
+  addToCart,
+  searchText,
+  setSearchText,
+}) {
   const location = useLocation();
   const pathSegments = location.pathname.split("/").filter(Boolean);
   const displayName = pathSegments[1]
     ? pathSegments[1].replaceAll("-", " ")
     : "Products";
-  const productsData = [...products];
+  const baseProducts = [...products];
   const collectionsData = getCollectionsWithCount(
-    productsData,
+    baseProducts,
     collectionPosters,
   ).sort((a, b) => a.name.localeCompare(b.name));
 
@@ -29,11 +44,122 @@ function Products({ wishlist, setWishlist, toggleWishlist, cartItems, setCartIte
   });
   let filtersMenu = true;
 
-  const [searchText, setSearchText] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [sortOption, setSortOption] = useState("default");
+  const [sortOption, setSortOption] = useState("featured");
 
-  const filteredProducts = [];
+  // Array Filtering Function
+  const matchArrayFilter = (selectedArray, productValue) => {
+    if (selectedArray.length === 0) return true;
+    return selectedArray.includes(productValue);
+  };
+
+  let filteredProducts = [...baseProducts];
+  // Searching
+  if (searchText.trim() !== "") {
+    filteredProducts = filteredProducts.filter((product) =>
+      product.title.toLowerCase().includes(searchText.toLowerCase()),
+    );
+  }
+
+  // Collection Link Based Filtering
+  const collectionSlug = pathSegments[1];
+  if (collectionSlug) {
+    filteredProducts = filteredProducts.filter((product) =>
+      product.collections.some(
+        (collection) => createSlug(collection) === collectionSlug,
+      ),
+    );
+  }
+
+  // Filtering
+  const [selectedFilters, setSelectedFilters] = useState({
+    availability: [],
+    brands: [],
+    categories: [],
+    materials: [],
+    sizes: [],
+    productTypes: [],
+    features: [],
+  });
+
+  // Filtering Toggle Function
+  const toggleFilter = (FilterType, value) => {
+    setSelectedFilters((prev) => {
+      const alreadySelected = prev[FilterType].includes(value);
+      return {
+        ...prev,
+        [FilterType]: alreadySelected
+          ? prev[FilterType].filter((item) => item !== value)
+          : [...prev[FilterType], value],
+      };
+    });
+  };
+
+  // Multi Filter Engine
+  filteredProducts = filteredProducts.filter((product) => {
+    const matchesBrand = matchArrayFilter(
+      selectedFilters.brands,
+      product.brand,
+    );
+
+    const matchesCategory = matchArrayFilter(
+      selectedFilters.categories,
+      product.category,
+    );
+
+    const matchesMaterial = matchArrayFilter(
+      selectedFilters.materials,
+      product.material,
+    );
+
+    const matchesProductType = matchArrayFilter(
+      selectedFilters.productTypes,
+      product.productType,
+    );
+
+    const matchesAvailability =
+      selectedFilters.availability.length === 0 ||
+      selectedFilters.availability.includes(
+        product.availability ? "In Stock" : "Out of Stock",
+      );
+
+    const matchesFeatures =
+      selectedFilters.features.length === 0 ||
+      selectedFilters.features.some((feature) =>
+        product.features.includes(feature.toLowerCase()),
+      );
+
+    const matchesSizes =
+      selectedFilters.sizes.length === 0 ||
+      selectedFilters.sizes.some((size) =>
+        product.sizes.includes(size.toLowerCase()),
+      );
+
+    return (
+      matchesBrand &&
+      matchesCategory &&
+      matchesMaterial &&
+      matchesProductType &&
+      matchesAvailability &&
+      matchesFeatures &&
+      matchesSizes
+    );
+  });
+
+  // Sorting
+  filteredProducts = [...filteredProducts];
+  filteredProducts.sort((a, b) => {
+    if (sortOption === "featured") {
+      return 0;
+    } else if (sortOption === "price-low-high") {
+      return a.price.replace("$", "") - b.price.replace("$", "");
+    } else if (sortOption === "price-high-low") {
+      return b.price.replace("$", "").localeCompare(a.price.replace("$", ""));
+    } else if (sortOption === "name-a-z") {
+      return a.title.localeCompare(b.title);
+    } else if (sortOption === "name-z-a") {
+      return b.title.localeCompare(a.title);
+    }
+  });
 
   return (
     <div className="">
@@ -132,12 +258,26 @@ function Products({ wishlist, setWishlist, toggleWishlist, cartItems, setCartIte
         <div className="grid md:grid-cols-[160px_1fr] lg:grid-cols-[240px_1fr] xl:grid-cols-[320px_1fr] gap-15 pb-20">
           {/* Left Sidebar */}
           <aside className="hidden md:flex filters">
-            <SidebarFilters />
+            <SidebarFilters
+              selectedFilters={selectedFilters}
+              toggleFilter={toggleFilter}
+            />
           </aside>
 
           {/* Right Content */}
           <section className="products">
-            <ProductsGridWithFilters products={filteredProducts} wishlist={wishlist} setWishlist={setWishlist} toggleWishlist={toggleWishlist} cartItems={cartItems} setCartItems={setCartItems} addToCart={addToCart} />
+            <ProductsGridWithFilters
+              products={filteredProducts}
+              wishlist={wishlist}
+              setWishlist={setWishlist}
+              toggleWishlist={toggleWishlist}
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+              addToCart={addToCart}
+              sortOption={sortOption}
+              setSortOption={setSortOption}
+              selectedFilters={selectedFilters}
+            />
           </section>
         </div>
       </Section>

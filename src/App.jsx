@@ -40,6 +40,8 @@ function App() {
     removeFromCart,
   } = useCart();
 
+  const [searchText, setSearchText] = useState("");
+
   return (
     <div className="overflow-hidden">
       <TopBar
@@ -57,6 +59,8 @@ function App() {
         increaseQuantity={increaseQuantity}
         decreaseQuantity={decreaseQuantity}
         removeFromCart={removeFromCart}
+        searchText={searchText}
+        setSearchText={setSearchText}
       />
 
       <Routes>
@@ -83,6 +87,8 @@ function App() {
               cartItems={cartItems}
               setCartItems={setCartItems}
               addToCart={addToCart}
+              searchText={searchText}
+              setSearchText={setSearchText}
             />
           }
         />

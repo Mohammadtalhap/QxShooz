@@ -2,13 +2,13 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { borderAnimation, createSlug } from "../utils/styles";
 
-function FilterSection({ data }) {
-  const defaultType = data.type ? false : true;
+function FilterSection({ filter, selectedFilters, toggleFilter }) {
+  const defaultType = filter.type ? false : true;
   return (
     <div className="filter-section border-t pt-5">
       {/* Header */}
       <button className="filter-header flex justify-between items-center w-full cursor-pointer">
-        <span className="font-medium">{data.title}</span>
+        <span className="font-medium">{filter.title}</span>
         <span className="">
           <MdOutlineKeyboardArrowDown />
         </span>
@@ -17,22 +17,28 @@ function FilterSection({ data }) {
       {/* Content */}
       {defaultType && (
         <div className="filter-content mt-3 space-y-1">
-          {data.options.map((option, index) => (
+          {filter.options.map((option, index) => (
             <label
               key={index}
               htmlFor={option}
               className="flex items-center gap-2 w-fit cursor-pointer"
             >
-              <input type="checkbox" id={option} className="h-4 w-4" />
-              <span className="">{option}</span>
+              <input
+                type="checkbox"
+                checked={selectedFilters[filter.filterKey].includes(option)}
+                onChange={() => toggleFilter(filter.filterKey, option)}
+                id={option}
+                className="h-4 w-4"
+              />
+              <span className="capitalize">{option}</span>
             </label>
           ))}
         </div>
       )}
 
-      {!defaultType && data.type === "link" && (
+      {!defaultType && filter.type === "link" && (
         <div className="filter-content flex flex-col mt-3 space-y-1">
-          {data.options.map((option, index) => (
+          {filter.options.map((option, index) => (
             <Link
               key={index}
               to={`/products/${createSlug(option)}`}
@@ -44,7 +50,7 @@ function FilterSection({ data }) {
         </div>
       )}
 
-      {!defaultType && data.type === "range" && (
+      {!defaultType && filter.type === "range" && (
         <div className="filter-content mt-3 space-y-1">
           <input type="range" className="w-full" />
           <div className="flex gap-5 nk-400 mt-2">
@@ -68,9 +74,9 @@ function FilterSection({ data }) {
         </div>
       )}
 
-      {!defaultType && data.type === "box" && (
+      {!defaultType && filter.type === "box" && (
         <div className="filter-content my-4 flex gap-3">
-          {data.options.map((option, index) => (
+          {filter.options.map((option, index) => (
             <label
               key={index}
               htmlFor={option}
@@ -82,9 +88,12 @@ function FilterSection({ data }) {
                 id={option}
                 name="size"
                 value={option.toLowerCase()}
+                checked={selectedFilters[filter.filterKey].includes(option)}
+                onChange={() => toggleFilter(filter.filterKey, option)}
                 hidden
               />
-              <span className="w-8 h-8 flex justify-center items-center border border-gray-500 peer-checked:border-black peer-checked:border-2 transition-all">
+              <span className="w-8 h-8 flex justify-center items-center border border-gray-500 peer-checked:border-black 
+              peer-checked:border-2 transition-all">
                 {option.charAt(0).toUpperCase()}
               </span>
             </label>
