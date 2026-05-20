@@ -9,12 +9,6 @@ import { useRef } from "react";
 
 function ProductsGridWithFilters({
   products,
-  wishlist,
-  setWishlist,
-  toggleWishlist,
-  cartItems,
-  setCartItems,
-  addToCart,
   sortOption,
   setSortOption,
   selectedFilters,
@@ -100,12 +94,6 @@ function ProductsGridWithFilters({
           <ProductCard
             key={index}
             cardObject={product}
-            wishlist={wishlist}
-            setWishlist={setWishlist}
-            toggleWishlist={toggleWishlist}
-            cartItems={cartItems}
-            setCartItems={setCartItems}
-            addToCart={addToCart}
           />
         ))}
       </div>

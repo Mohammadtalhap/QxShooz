@@ -16,12 +16,6 @@ import { Features } from "tailwindcss";
 import { CgProductHunt } from "react-icons/cg";
 
 function Products({
-  wishlist,
-  setWishlist,
-  toggleWishlist,
-  cartItems,
-  setCartItems,
-  addToCart,
   searchText,
   setSearchText,
 }) {
@@ -268,12 +262,6 @@ function Products({
           <section className="products">
             <ProductsGridWithFilters
               products={filteredProducts}
-              wishlist={wishlist}
-              setWishlist={setWishlist}
-              toggleWishlist={toggleWishlist}
-              cartItems={cartItems}
-              setCartItems={setCartItems}
-              addToCart={addToCart}
               sortOption={sortOption}
               setSortOption={setSortOption}
               selectedFilters={selectedFilters}

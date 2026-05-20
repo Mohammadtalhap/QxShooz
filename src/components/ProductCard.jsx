@@ -3,17 +3,13 @@ import { AiOutlineSwap } from "react-icons/ai";
 import { LuEye } from "react-icons/lu";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
 import Button from "./Button";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../context/CartContext";
+import { WishlistContext } from "../context/WishlistContext";
 
-function ProductCard({
-  cardObject,
-  wishlist,
-  setWishlist,
-  toggleWishlist,
-  cartItems,
-  setCartItems,
-  addToCart,
-}) {
+function ProductCard({ cardObject }) {
+  const { addToCart } = useContext(CartContext);
+  const { wishlist, toggleWishlist } = useContext(WishlistContext);
   const [isAdding, setIsAdding] = useState(false);
   const handleAddToCart = async () => {
     setIsAdding(true);

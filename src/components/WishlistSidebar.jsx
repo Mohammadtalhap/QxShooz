@@ -2,8 +2,11 @@ import React from "react";
 import { useState } from "react";
 import Button from "../components/Button";
 import { Heart, X } from "lucide-react";
+import { useContext } from "react";
+import { WishlistContext } from "../context/WishlistContext";
 
-function WishlistSidebar({ className = "", wishlistProducts, toggleWishlist }) {
+function WishlistSidebar({ className = "" }) {
+  const { wishlistProducts, toggleWishlist } = useContext(WishlistContext);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className={`${className}`}>

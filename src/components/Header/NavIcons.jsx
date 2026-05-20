@@ -3,21 +3,16 @@ import { FaRegUser } from "react-icons/fa6";
 import { IoIosHeartEmpty, IoIosSearch } from "react-icons/io";
 import CartSidebar from "../CartSidebar";
 import WishlistSidebar from "../WishlistSidebar";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../../context/CartContext";
+import { WishlistContext } from "../../context/WishlistContext";
 
 function NavIcons({
-  wishlist,
-  toggleWishlist,
-  wishlistProducts,
-  cartItems,
-  setCartItems,
-  addToCart,
-  increaseQuantity,
-  decreaseQuantity,
-  removeFromCart,
   searchText,
   setSearchText,
 }) {
+  const { cartItems } = useContext(CartContext);
+  const { wishlist } = useContext(WishlistContext);
   const countCartItems = cartItems.reduce(
     (total, item) => total + item.quantity,
     0,
@@ -31,24 +26,14 @@ function NavIcons({
       />
       <FaRegUser className="text-lg cursor-pointer hover:text-[#b63f4f]" />
       <div className="relative group cursor-pointer">
-        <WishlistSidebar
-          wishlistProducts={wishlistProducts}
-          toggleWishlist={toggleWishlist}
-        />
+        <WishlistSidebar />
         {/* Count Bubble */}
         <span className="absolute bottom-0 -right-1 bg-[#ae3f4f] text-white text-xs w-4 h-4 flex justify-center items-center rounded-full">
           {wishlist.length}
         </span>
       </div>
       <div className="group flex gap-1 items-center cursor-pointer">
-        <CartSidebar
-          cartItems={cartItems}
-          setCartItems={setCartItems}
-          addToCart={addToCart}
-          increaseQuantity={increaseQuantity}
-          decreaseQuantity={decreaseQuantity}
-          removeFromCart={removeFromCart}
-        />
+        <CartSidebar />
         <p className="">({countCartItems})</p>
       </div>
       {/* Searh Bar */}

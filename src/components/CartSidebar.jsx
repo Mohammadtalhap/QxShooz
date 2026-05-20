@@ -1,18 +1,14 @@
 import { Minus, Plus, ShoppingCart, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Button from "../components/Button";
 import products from "../data/Products";
+import { CartContext } from "../context/CartContext";
 
 function CartSidebar({
   className = "",
   children = "",
-  cartItems,
-  setCartItems,
-  addToCart,
-  increaseQuantity,
-  decreaseQuantity,
-  removeFromCart,
 }) {
+  const { cartItems, increaseQuantity, decreaseQuantity, removeFromCart } = useContext(CartContext);
   const [isOpen, setIsOpen] = useState(false);
   const cartProducts = cartItems.map((cartItem) => {
     const productsData = products.find((product) => product.id === cartItem.id);
