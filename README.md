@@ -159,6 +159,9 @@ The application will be available at `http://localhost:5173`.
 
 ---
 
+<img width="201" height="251" alt="1781074837671-download-(1)" src="https://github.com/user-attachments/assets/49153e39-3bf9-479a-b6ad-b23ac59fb483" />
+
+
 <div align="center">
 
 **Happy Coding! 🚀**
